@@ -1,11 +1,14 @@
-import { Button } from "@nextui-org/react"
+// import { Button } from "@nextui-org/react"
 import './App.css';
+import Divbar from "./components/sidebar";
+import CustomTable from './components/Tables';
+import Topbar from './components/Topbar.tsx';
 
 function App() {
   return (
-    <div className="p-4">
-      <h1 className="text-3xl text-blue-600 font-bold">Hello Tailwind CSS</h1>
-      <Button color="primary">Click Me</Button>
+    <div className="h-screen">
+      <Topbar />
+      <CustomTable />
     </div>
   );
 }
