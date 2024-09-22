@@ -6,7 +6,6 @@ import { useAuth } from '../context/AuthContext';
 import logo from "../assets/images/logo.png";
 import { VscEye, VscEyeClosed } from "react-icons/vsc";
 
-
 const Login: React.FC = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -16,17 +15,14 @@ const Login: React.FC = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log('Form submitted');
-        console.log('Username:', username);
-        console.log('Password:', password);
-    
+
         try {
             const token = await login(username, password);
-            setToken(token);
-            alert('Login successful');
-            navigate('/register');
+            localStorage.setItem('token', token);
+            console.log('Login successful');
+            navigate('/protected');
         } catch (error) {
-            alert('Login failed');
+            console.log('Login failed');
             console.error('Login error:', error);
         }
     };
@@ -44,7 +40,7 @@ const Login: React.FC = () => {
                     <Input
                         isClearable
                         onChange={(e) => setUsername(e.target.value)}
-                        type="email"
+                        type="text"
                         label="Username"
                         placeholder="Enter your username"
                         labelPlacement="outside"

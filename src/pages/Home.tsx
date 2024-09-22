@@ -16,6 +16,9 @@ import { BsCart } from "react-icons/bs";
 import { GoMail } from "react-icons/go";
 import { BiBell } from "react-icons/bi";
 import { PiNotepad } from "react-icons/pi";
+import { Card, CardHeader, CardBody, CardFooter, Divider, Image } from "@nextui-org/react";
+import { FaUserLarge } from "react-icons/fa6";
+import { FaUserPlus } from "react-icons/fa";
 
 
 const Home: React.FC = () => {
@@ -64,15 +67,79 @@ const Home: React.FC = () => {
                         <NavbarItem>
                             <span className="text-white"><IoSettingsOutline size="22" /></span>
                         </NavbarItem>
-                        
+
                     </NavbarContent>
                 </Navbar>
                 <Navbar className="justify-start">
                     <NavbarBrand>
-                    <TbDashboard size="30" /><p className="font-bold pl-4"> Dashboard</p>
+                        <TbDashboard size="30" /><p className="font-bold pl-4"> Dashboard</p>
                     </NavbarBrand>
                 </Navbar>
+                <div className="columns-4 p-4">
+                <Card className="max-w-[400px]">
+                    <CardHeader className="flex gap-3">
+                    <span className=""><FaUserPlus size="50" /></span>
+                    </CardHeader>
+                    <Divider />
+                    <CardBody>
+                        <p className="text-2xl">Active Client</p>
+                    </CardBody>
+                    
+                </Card>
+                <Card className="max-w-[400px]">
+                    <CardHeader className="flex gap-3">
+
+                    <span className=""><FaUserLarge size="50" /></span>
+                    </CardHeader>
+                    <Divider />
+                    <CardBody>
+                        <p className="text-2xl">Active Admin</p>
+                    </CardBody>
+                    
+                </Card>
+                <Card className="max-w-[400px]">
+                    <CardHeader className="flex gap-3">
+                        <Image
+                            alt="nextui logo"
+                            height={40}
+                            radius="sm"
+                            src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4"
+                            width={40}
+                        />
+                        <div className="flex flex-col">
+                            <p className="text-md">NextUI</p>
+                            <p className="text-small text-default-500">nextui.org</p>
+                        </div>
+                    </CardHeader>
+                    <Divider />
+                    <CardBody>
+                        <p className="text-2xl">Total Expenses</p>
+                    </CardBody>
+                    
+                </Card>
+                <Card className="max-w-[400px]">
+                    <CardHeader className="flex gap-3">
+                        <Image
+                            alt="nextui logo"
+                            height={40}
+                            radius="sm"
+                            src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4"
+                            width={40}
+                        />
+                        <div className="flex flex-col">
+                            <p className="text-md">NextUI</p>
+                            <p className="text-small text-default-500">nextui.org</p>
+                        </div>
+                    </CardHeader>
+                    <Divider />
+                    <CardBody>
+                        <p className="text-2xl">Running Projects</p>
+                    </CardBody>
+                    
+                </Card>
+                </div>
             </div>
+
         </div>
     );
 };

@@ -1,28 +1,32 @@
-// src/components/Protected.tsx
-
 import React, { useEffect, useState } from 'react';
 import { getProtectedData } from '../api';
-import { useAuth } from '../context/AuthContext';
+import Home from '../pages/Home';
 
-const Protected: React.FC = () => {
-    const { token } = useAuth();
-    const [data, setData] = useState<string | null>(null);
+const ProtectedPage: React.FC = () => {
+    const [data, setData] = useState(null);
+    const token = localStorage.getItem('token');
 
     useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await getProtectedData(token);
+                setData(response.data);
+            } catch (error) {
+                console.error('Error fetching protected data:', error);
+            }
+        };
+
         if (token) {
-            const fetchData = async () => {
-                try {
-                    const response = await getProtectedData(token);
-                    setData(response.data);
-                } catch (error) {
-                    setData('Access denied');
-                }
-            };
             fetchData();
         }
     }, [token]);
 
-    return <div>{data ? data : 'Loading...'}</div>;
+    return (
+        <div>
+            <h1>Protected Data</h1>
+            {data ? <pre>{JSON.stringify(data, null, 2)}</pre> : <Home />}
+        </div>
+    );
 };
 
-export default Protected;
+export default ProtectedPage;
